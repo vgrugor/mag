@@ -1,8 +1,5 @@
 <?php
 
-require ROOT . '/models/category.php';
-require ROOT . '/models/product.php';
-
 /**
  * Информация о продуте
  *

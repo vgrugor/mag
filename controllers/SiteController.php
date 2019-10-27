@@ -1,8 +1,5 @@
 <?php
 
-require_once ROOT . '/models/category.php';
-require_once ROOT . '/models/product.php';
-
 /**
  * Для главной страницы
  *

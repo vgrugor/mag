@@ -1,8 +1,5 @@
 <?php
 
-require_once ROOT . '/models/category.php';
-require_once ROOT . '/models/product.php';
-
 class CatalogController {
     
     /**
@@ -28,14 +25,19 @@ class CatalogController {
      * @param int $categoryId
      * @return boolean
      */
-    public function actionCategory($categoryId) {
+    public function actionCategory($categoryId, $page = 1) {
         
         //для отображения слева на странице
         $categoryes = [];
         $categoryes = Category::getCategoriesList();
         
+        //получаем общее количество товаров в категории
+        $total = Product::getTotalProductsInCategory($categoryId);
+        
         $categoryProducts = [];
-        $categoryProducts = Product::getProductListByCategory($categoryId);
+        $categoryProducts = Product::getProductListByCategory($categoryId, $page);
+        
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
         
         require_once ROOT . '/views/catalog/category.php';
         

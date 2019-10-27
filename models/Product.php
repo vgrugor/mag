@@ -2,7 +2,7 @@
 
 class Product {
     
-    const SHOW_BY_DEFAULT = 10;     //количество отображаемых рекомендуемых товаров по умолчанию
+    const SHOW_BY_DEFAULT = 3;     //количество отображаемых рекомендуемых товаров по умолчанию
     
     /**
      * Возвращает последние добавленные товары
@@ -42,7 +42,10 @@ class Product {
      * @param type $categoryId
      * @return array
      */
-    public static function getProductListByCategory($categoryId = false) {
+    public static function getProductListByCategory($categoryId = false, $page = 1) {
+        
+        $categoryId = intval($categoryId);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
         
         if ($categoryId) {
             
@@ -53,7 +56,8 @@ class Product {
             $result = $db->query('SELECT id, name, price, image, is_new FROM product '
                     . 'WHERE status = "1" AND category_id = ' . $categoryId . ' '
                     . 'ORDER BY id DESC '
-                    . 'LIMIT ' . self::SHOW_BY_DEFAULT);
+                    . 'LIMIT ' . self::SHOW_BY_DEFAULT
+                    . ' OFFSET ' . $offset);
             
             $i = 0;
             while ($row = $result->fetch()) {
@@ -87,5 +91,18 @@ class Product {
             return $result->fetch();
         }
         
+    }
+    
+    public static function getTotalProductsInCategory($categoryId) {
+        
+        $db = Db::getConnection();
+        
+        $result = $db->query('SELECT count(id) AS count FROM product '
+                . 'WHERE status = "1" AND category_id = ' . $categoryId);
+        
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+        
+        return $row['count'];
     }
 }
