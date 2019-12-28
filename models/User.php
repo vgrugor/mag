@@ -43,6 +43,19 @@ class User {
     }
     
     /**
+     * Проверка корректности телефона в заказе
+     * @param str $phone
+     * @return boolean
+     */
+    public static function checkPhone($phone)
+    {
+        if (strlen($phone > 8)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Валидация email
      * @param type $email
      * @return boolean
@@ -141,8 +154,8 @@ class User {
     }
     
     /**
-     * Проверка, является ли пользователь гостем. Для выведения ссылок в header.php
-     * @return boolean
+     * Проверка, является ли пользователь гостем.
+     * @return boolean - true пользователь гость, false пользователь зарегистрирован
      */
     public static function isGuest()
     {

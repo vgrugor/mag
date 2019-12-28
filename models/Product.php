@@ -105,4 +105,55 @@ class Product {
         
         return $row['count'];
     }
+    
+    /**
+     * Для получение полной информации о товарах из корзины
+     * @param array $idsArray - Ид товаров
+     * @return array - полная информация о товарах
+     */
+    public static function getProductsByIds($idsArray)
+    {
+        $products = [];
+        
+        $db = Db::getConnection();
+        
+        $idsString = implode(',', $idsArray);
+        
+        $sql = "SELECT * FROM product WHERE status='1' AND id IN ($idsString)";
+        
+        $result = $db->query($sql);
+        
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['price'] = $row['price'];
+            $i++;
+        }
+        
+        return $products;
+    }
+    
+    public static function getRecommendedProducts()
+    {
+        $db = Db::getConnection();
+        
+        $sql = "SELECT * FROM product WHERE status = 1 AND is_recommended = 1 ";
+        
+        $result = $db->query($sql);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $recommendedProducts[$i]['id'] = $row['id'];
+            $recommendedProducts[$i]['name'] = $row['name'];
+            $recommendedProducts[$i]['price'] = $row['price'];
+            $i++;
+        }
+        
+        return $recommendedProducts;
+    }
 }

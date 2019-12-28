@@ -14,11 +14,11 @@
         <group>
             <file>file:/C:/OServer/OSPanel/domains/test2/config/routes.php</file>
             <file>file:/C:/OServer/OSPanel/domains/test2/views/user/login.php</file>
-            <file>file:/C:/OServer/OSPanel/domains/test2/views/cabinet/edit.php</file>
+            <file>file:/C:/OServer/OSPanel/domains/test2/models/Order.php</file>
             <file>file:/C:/OServer/OSPanel/domains/test2/models/User.php</file>
-            <file>file:/C:/OServer/OSPanel/domains/test2/controllers/UserController.php</file>
-            <file>file:/C:/OServer/OSPanel/domains/test2/controllers/CabinetController.php</file>
-            <file>file:/C:/OServer/OSPanel/domains/test2/views/cabinet/index.php</file>
+            <file>file:/C:/OServer/OSPanel/domains/test2/views/cart/checkout.php</file>
+            <file>file:/C:/OServer/OSPanel/domains/test2/controllers/CartController.php</file>
+            <file>file:/C:/OServer/OSPanel/domains/test2/models/Cart.php</file>
         </group>
     </open-files>
 </project-private>
