@@ -9,10 +9,10 @@ class User {
     
     /**
      * Добавление записи в БД с именем, email и паролем
-     * @param str $name
-     * @param str $email
-     * @param str $password
-     * @return bool
+     * @param str $name - Имя пользователя
+     * @param str $email - email пользователя
+     * @param str $password - пароль пользователя
+     * @return bool - результат выполнения запроса (добавления пользователя)
      */
     public static function register($name, $email, $password) {
         

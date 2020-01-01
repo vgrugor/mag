@@ -91,6 +91,10 @@ class Cart {
         }
     }
     
+    /**
+     * Удалить 1 еденицу товара из корзины
+     * @param int $productId
+     */
     public static function delete($productId)
     {
         //получаем товары в корзине

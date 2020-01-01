@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Информация о продуте
+ * Подробная информация о продукте
  *
  * @author rt.hryhoriev
  */
@@ -12,6 +12,7 @@ class ProductController {
         $categories = [];
         $categories = Category::getCategoriesList();
         
+        $product = [];
         $product = Product::getProductById($id);
         
         require_once ROOT . '/views/product/view.php';

@@ -10,10 +10,12 @@ class Category {
         
         $db = Db::getConnection();
         
-        $categories = [];
+        $categoryList = [];
         
-        $result = $db->query('SELECT id, name FROM category '
-                . 'ORDER BY sort_order ASC');
+        $sql = 'SELECT id, name FROM category '
+                . 'ORDER BY sort_order ASC';
+        
+        $result = $db->query($sql);
         
         $i = 0;
         while ($row = $result->fetch()) {

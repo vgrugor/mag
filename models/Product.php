@@ -85,7 +85,9 @@ class Product {
         if ($id) {
             $db = Db::getConnection();
             
-            $result = $db->query('SELECT * FROM product WHERE id = ' . $id);
+            $sql = 'SELECT * FROM product WHERE id = ' . $id;
+            
+            $result = $db->query($sql);
             $result->setFetchMode(PDO::FETCH_ASSOC);
             
             return $result->fetch();
@@ -93,12 +95,19 @@ class Product {
         
     }
     
+    /**
+     * Получение количества товаров в категории по ее id
+     * @param int $categoryId - ИД категории
+     * @return int - количество товаров в категории
+     */
     public static function getTotalProductsInCategory($categoryId) {
         
         $db = Db::getConnection();
         
-        $result = $db->query('SELECT count(id) AS count FROM product '
-                . 'WHERE status = "1" AND category_id = ' . $categoryId);
+        $sql = 'SELECT count(id) AS count FROM product '
+                . 'WHERE status = "1" AND category_id = ' . $categoryId;
+        
+        $result = $db->query($sql);
         
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $row = $result->fetch();
@@ -141,9 +150,12 @@ class Product {
     {
         $db = Db::getConnection();
         
+        $recommendedProducts = [];
+        
         $sql = "SELECT * FROM product WHERE status = 1 AND is_recommended = 1 ";
         
         $result = $db->query($sql);
+        
         $result->setFetchMode(PDO::FETCH_ASSOC);
         
         $i = 0;

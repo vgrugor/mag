@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Каталог товаров
+ */
 class CatalogController {
     
     /**

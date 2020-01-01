@@ -1,14 +1,17 @@
 <?php
 
 /**
- * Для главной страницы
+ * Главная страница
  *
  * @author rt.hryhoriev
  */
 
 class SiteController {
     
-    
+    /**
+     * Главная страница сайта
+     * @return boolean
+     */
     public function actionIndex() {
         
         //список категорий
@@ -36,6 +39,7 @@ class SiteController {
     {
         $userEmail = '';
         $userText = '';
+        
         $result = false;
         
         if (isset($_POST['submit'])) {

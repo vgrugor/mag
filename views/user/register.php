@@ -8,7 +8,7 @@
                 <div class="signup-form">
                     <h2>Регистрация на сайте</h2>
                     <?php if ($result): ?>
-                    <p>Вы зарегистрированы</p>
+                        <p>Вы зарегистрированы</p>
                     <?php else: ?>
                         <?php if (isset($errors) && is_array($errors)): ?>
                         <ul>

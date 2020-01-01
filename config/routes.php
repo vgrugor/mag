@@ -19,8 +19,8 @@
         '/user/login' => 'user/login',
         '/user/logout' => 'user/logout',
         
-        '/cabinet/edit' => 'cabinet/edit',
-        '/cabinet' => 'cabinet/index',
+        '/cabinet/edit' => 'cabinet/edit',              //Редактирование личных данных пользователя
+        '/cabinet' => 'cabinet/index',                  //Кабинет пользователя
         
         '/contacts' => 'site/contact',      //для формы обратной связи
         

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of CartController
+ * Корзина товаров
  *
  * @author rt.hryhoriev
  */
@@ -21,9 +21,14 @@ class CartController {
     public function actionAddAjax ($id)
     {
         echo Cart::addProduct($id);
+        
         return true;
     }
     
+    /**
+     * Страница корзины со списком товаров
+     * @return boolean
+     */
     public function actionIndex()
     {
         //для отображения в меню списка категорий
@@ -60,7 +65,7 @@ class CartController {
         $category = [];
         $category = Category::getCategoriesList();
         
-        //статус для 
+        //статус для сохранения работы метода save()
         $result = false;
         
         //Если форма отправлена

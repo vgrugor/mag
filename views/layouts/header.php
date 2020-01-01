@@ -62,7 +62,7 @@
                                 <ul class="nav navbar-nav">
                                     <li>
                                         <a href="/cart"><i class="fa fa-shopping-cart"></i> Корзина
-                                            <span id="cart-count">(<?=Cart::countItems()?>)</span>
+                                            (<span id="cart-count"><?=Cart::countItems()?></span>)
                                         </a>
                                     </li>
                                     <?php if (User::isGuest()): ?>
