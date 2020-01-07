@@ -146,6 +146,10 @@ class Product {
         return $products;
     }
     
+    /**
+     * Получение рекомендуемых товаров
+     * @return array - массив с рекомендуемыми товарами
+     */
     public static function getRecommendedProducts()
     {
         $db = Db::getConnection();
@@ -163,9 +167,23 @@ class Product {
             $recommendedProducts[$i]['id'] = $row['id'];
             $recommendedProducts[$i]['name'] = $row['name'];
             $recommendedProducts[$i]['price'] = $row['price'];
+            $recommendedProducts[$i]['is_new'] = $row['is_new'];
             $i++;
         }
         
         return $recommendedProducts;
+    }
+    
+    public static function getImage($id)
+    {
+        $id = intval($id);
+        
+        if ($id) {
+            $product = Product::getProductById($id);
+
+            $src = '/template/images/shop/' . $product['image'];
+
+            return $src;
+        }
     }
 }
