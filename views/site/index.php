@@ -54,8 +54,6 @@
                         <div class="recommended_items"><!--recommended_items-->
                             <h2 class="title text-center">Рекомендуемые товары</h2>
                             
-                            <?php //print_r($recommendedProducts); ?>
-                            
                             <div class="cycle-slideshow"
                                  data-cycle-fx=carousel
                                  data-cycle-timeout=5000
@@ -87,7 +85,6 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
-                                
                                 
                             </div>
                             
