@@ -186,4 +186,32 @@ class Product {
             return $src;
         }
     }
+    
+    /**
+     * Список всех товаров на сайте
+     * @return array <p>Массив с информацией о товарах</p>
+     */
+    public static function getProductsList()
+    {
+        $productList = [];
+        
+        $db = Db::getConnection();
+        
+        $sql = 'SELECT id, name, code, price FROM product ORDER BY id ASC';
+        
+        $result = $db->query($sql);
+        
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        
+        $i=0;
+        while ($row = $result->fetch()) {
+            $productList[$i]['id'] = $row['id'];
+            $productList[$i]['name'] = $row['name'];
+            $productList[$i]['code'] = $row['code'];
+            $productList[$i]['price'] = $row['price'];
+            $i++;
+        }
+        
+        return $productList;
+    }
 }

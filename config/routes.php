@@ -22,11 +22,12 @@
         '/cabinet/edit' => 'cabinet/edit',              //Редактирование личных данных пользователя
         '/cabinet' => 'cabinet/index',                  //Кабинет пользователя
         
-        '/contacts' => 'site/contact',      //для формы обратной связи
+        '/contacts' => 'site/contact',              //для формы обратной связи
         
-        '/admin' => 'admin/index',          //главная панели администратора
+        '/admin/product' => 'AdminProduct/index',   //страница со списком товаров
+        '/admin' => 'admin/index',                  //главная панели администратора
         
-        '' => 'site/index', //главная страница
+        '' => 'site/index',                         //главная страница
         
     ];
 
