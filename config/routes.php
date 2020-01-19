@@ -24,6 +24,7 @@
         
         '/contacts' => 'site/contact',              //для формы обратной связи
         
+        '/admin/product/delete/([0-9]+)' => 'AdminProduct/delete/$1',
         '/admin/product' => 'AdminProduct/index',   //страница со списком товаров
         '/admin' => 'admin/index',                  //главная панели администратора
         

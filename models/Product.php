@@ -214,4 +214,20 @@ class Product {
         
         return $productList;
     }
+    
+    /**
+     * Удаление товара по id
+     * $param int $id <p>идентификатор товара</p>
+     * @return bool <p>результат выполнения запроса на удаление товара</p>
+     */
+    public static function deleteProductById($id)
+    {
+        $db = Db::getConnection();
+        
+        $sql = 'DELETE FROM product WHERE id = :id';
+        
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
+    }
 }
