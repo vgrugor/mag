@@ -230,4 +230,38 @@ class Product {
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         return $result->execute();
     }
+    
+    /**
+     * Добавление нового товара
+     * @param array $options <p>массив свойств нового товара</p>
+     * @return int <p>идентификатор последней добавленной записи, или 0 если не удалось выполнить запрос</p>
+     */
+    public static function createProduct($options)
+    {
+        $db = Db::getConnection();
+        
+        $sql = 'INSERT INTO product '
+                . '(name, category_id, code, price, brand, availability, '
+                . 'description, is_new, is_recommended, status) '
+                . 'VALUES '
+                . '(:name, :category_id, :code, :price, :brand, :availability, '
+                . ':description, :is_new, :is_recommended, :status)';
+        
+        $result = $db->prepare($sql);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
+        $result->bindParam(':code', $options['code'], PDO::PARAM_INT);
+        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+        $result->bindParam(':availability', $options['availability'], PDO::PARAM_INT);
+        $result->bindParam(':description', $options['discription'], PDO::PARAM_STR);
+        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
+        $result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_INT);
+        $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
+        
+        if ($result->execute()) {
+            return $db->lastInsertId();
+        }
+        return 0;
+    }
 }
